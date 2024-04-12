@@ -1,33 +1,32 @@
-import { useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import config from '../../config.json';
+import config from "../../config.json";
 import axios from "axios";
 import "./Posts.css";
 
 const Posts = () => {
   const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
-   
-  const fetchPosts = async() => {
-    const res = await axios.get(config.apiUrl);
+
+  const fetchPosts = async () => {
+    const res = await axios.get("http://localhost:5000");
     setPosts(res.data);
- };
-  
+  };
 
   useEffect(() => {
     fetchPosts();
   }, []);
 
   const handleDelete = async (post) => {
-    setPosts(posts.filter((p) => p.id !==post._id));
-    await axios.delete(`${config.apiUrl}/${post._id}`);
-};
+    const res = await axios.delete(`http://localhost:5000/${post._id}`);
+    fetchPosts()
+  };
 
   return (
     <div className="posts">
       <div className="container">
-      <button
-       onClick={() => navigate("/post/new")}
+        <button
+          onClick={() => navigate("/post/new")}
           className="btn btn-blue mb-4"
         >
           New Post
@@ -46,21 +45,31 @@ const Posts = () => {
               <tr key={post._id}>
                 <td> {post.title} </td>
                 <td> {post.content} </td>
-                <td> <button onClick={() => navigate(`/post/${post._id}`)} className="btn btn-blue">
+                <td>
+                  {" "}
+                  <button
+                    onClick={() => navigate(`/post/${post._id}`)}
+                    className="btn btn-blue"
+                  >
                     Update
-                  </button> </td>
-                <td> <button onClick={() => handleDelete(post)} className="btn btn-danger"
+                  </button>{" "}
+                </td>
+                <td>
+                  {" "}
+                  <button
+                    onClick={() => handleDelete(post)}
+                    className="btn btn-danger"
                   >
                     Delete
-                  </button> </td>
-
+                  </button>{" "}
+                </td>
               </tr>
             ))}
           </tbody>
-        </table>   
+        </table>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Posts
+export default Posts;
