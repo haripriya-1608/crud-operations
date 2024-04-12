@@ -14,7 +14,7 @@ const Post = () => {
   useEffect(() => {
     if (id === "new") return;
     const fetchPost = async () => {
-      const res = await axios.get(`http://localhost:5000/${id}`);
+      const res = await axios.get(`https://crud-operations-5oo4.onrender.com/${id}`);
       setPost(res.data);
     };
     fetchPost();
@@ -29,10 +29,10 @@ const Post = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (id === "new") {
-      await axios.post("http://localhost:5000/post-data", post);
+      await axios.post("https://crud-operations-5oo4.onrender.com/post-data", post);
       return navigate("/");
     } else {
-      await axios.put(`http://localhost:5000/${id}`, post);
+      await axios.put(`https://crud-operations-5oo4.onrender.com/${id}`, post);
       return navigate("/");
     }
   };

@@ -9,7 +9,7 @@ const Posts = () => {
   const [posts, setPosts] = useState([]);
 
   const fetchPosts = async () => {
-    const res = await axios.get("http://localhost:5000");
+    const res = await axios.get("https://crud-operations-5oo4.onrender.com");
     setPosts(res.data);
   };
 
@@ -18,7 +18,7 @@ const Posts = () => {
   }, []);
 
   const handleDelete = async (post) => {
-    const res = await axios.delete(`http://localhost:5000/${post._id}`);
+    const res = await axios.delete(`https://crud-operations-5oo4.onrender.com/${post._id}`);
     fetchPosts()
   };
 
