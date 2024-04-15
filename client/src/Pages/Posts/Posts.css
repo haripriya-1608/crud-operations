@@ -32,6 +32,10 @@
     margin: 4px 2px;
     cursor: pointer;
    }
+   .btn-blue:hover{
+    background-color: darkblue;
+    color: white;
+   }
    
    .mb-4 {
     margin-bottom: 1.5rem; /* Example margin */

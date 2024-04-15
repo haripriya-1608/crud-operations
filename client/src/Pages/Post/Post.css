@@ -31,3 +31,7 @@
     outline: none;
     border: none;
   }
+  .btn-blue:hover{
+    background-color: darkblue;
+    color: white;
+   }

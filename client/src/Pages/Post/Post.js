@@ -55,7 +55,7 @@ const Post = () => {
             value={post.content}
             onChange={handleChange}
           />
-          <button onClick={handleSubmit} className="btn btn-primary">
+          <button onClick={handleSubmit} className="btn btn-blue">
             {id === "new" ? "Post" : "Update"}
           </button>
         </form>
